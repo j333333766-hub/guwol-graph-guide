@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>우리 반을 그래프로</title>
+<meta name="description" content="중학교 1학년 수학 Ⅵ. 통계 단원 실시간 수업 사이트 안내 — 학생이 답하는 순간 우리 반 그래프가 되는 14차시 수업">
+<meta property="og:title" content="우리 반을 그래프로 · 중1 통계 실시간 수업">
+<meta property="og:description" content="학생이 답하는 순간 우리 반 그래프가 됩니다. 14차시 121단계, 교과서에 충실한 통계 수업 사이트.">
+<meta property="og:image" content="img/hero-teacher.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --paper:#FBF7EF; --surface:#FFFFFF; --sunk:#F3EDE1; --ink:#1C2230; --muted:#5D6575; --line:#E6DDCB;
+  --or:#F2711C; --gr:#0E9F5A; --bl:#1E63C4; --yl:#FFC53D; --pu:#7B4BC4; --rd:#E0453A; --sky:#1B9BC4;
+  --night:#14213D; --night2:#1C2C4F; --night-ink:#EEF2FA; --night-muted:#A9B5CF;
+  --shadow:0 26px 50px -26px rgba(20,33,61,.45);
+  --f-display:"Black Han Sans","Noto Sans KR",system-ui,sans-serif;
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#11161F;--surface:#18202C;--sunk:#1F2936;--ink:#E9EDF4;--muted:#A3ACBC;--line:#2B3646;
+  --night:#0B1324;--night2:#132039;--shadow:0 26px 50px -26px rgba(0,0,0,.8);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#11161F;--surface:#18202C;--sunk:#1F2936;--ink:#E9EDF4;--muted:#A3ACBC;--line:#2B3646;
+  --night:#0B1324;--night2:#132039;--shadow:0 26px 50px -26px rgba(0,0,0,.8);color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{text-wrap:balance;line-height:1.25;margin:0}
+h2{font-family:var(--f-display);font-weight:400;font-size:clamp(1.7rem,3.6vw,2.55rem);letter-spacing:-.01em}
+h3{font-size:1.16rem;font-weight:900}
+p{margin:0}
+a{color:var(--bl)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--yl);outline-offset:3px;border-radius:6px}
+img{max-width:100%;height:auto;display:block}
+.eyebrow{font-size:.78rem;font-weight:900;letter-spacing:.16em;color:var(--or)}
+section{padding-block:88px}
+.sec-head{display:grid;gap:12px;max-width:740px;margin-bottom:44px}
+.sec-head p{color:var(--muted)}
+.shot{border-radius:14px;box-shadow:var(--shadow);border:1px solid var(--line);background:#fff;cursor:zoom-in}
+.cap{font-size:.85rem;color:var(--muted);margin-top:10px}
+.stripe{height:8px;background:linear-gradient(90deg,var(--or) 0 33.3%,var(--gr) 33.3% 66.6%,var(--bl) 66.6%)}
+
+/* ---------- 히어로 ---------- */
+.hero{position:relative;background:var(--night);color:var(--night-ink);overflow:hidden;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:28px 28px}
+.hero::before{content:"";position:absolute;inset:auto -10% -40% -10%;height:70%;background:radial-gradient(closest-side,rgba(30,99,196,.55),transparent);pointer-events:none}
+.top{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.02rem}
+.brand-mark{width:30px;height:30px;border-radius:8px;background:#fff;display:flex;align-items:flex-end;justify-content:center;gap:3px;padding:6px 5px}
+.brand-mark i{width:5px;border-radius:2px 2px 0 0}
+.brand-mark i:nth-child(1){height:8px;background:var(--or)}.brand-mark i:nth-child(2){height:16px;background:var(--gr)}.brand-mark i:nth-child(3){height:12px;background:var(--bl)}
+.top nav{display:flex;gap:18px;font-size:.9rem;flex-wrap:wrap}
+.top nav a{color:var(--night-muted);text-decoration:none}
+.top nav a:hover{color:#fff}
+.hero-copy{position:relative;text-align:center;max-width:860px;margin:60px auto 40px;display:grid;gap:20px;justify-items:center}
+.kicker{display:inline-flex;gap:8px;align-items:center;font-size:.86rem;font-weight:700;color:var(--yl);border:1px solid rgba(255,197,61,.45);border-radius:999px;padding:5px 14px}
+.hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(2.2rem,5.6vw,4.1rem);letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--yl)}
+.hero h1 .u{background:linear-gradient(transparent 62%,rgba(242,113,28,.55) 62%)}
+.hero .lead{color:var(--night-muted);font-size:1.08rem;max-width:38em}
+.cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:900;text-decoration:none;font-size:.98rem;border:2px solid var(--yl)}
+.btn.primary{background:var(--yl);color:#1A1A1A}
+.btn.ghost{color:var(--yl)}
+.btn:hover{transform:translateY(-1px)}
+.url{font-family:var(--f-mono);font-size:.92rem;color:var(--night-ink);background:rgba(255,255,255,.08);border-radius:8px;padding:4px 10px}
+.laptop{position:relative;max-width:1100px;margin:0 auto;padding:14px 14px 0;background:#0B0F18;border-radius:20px 20px 0 0;box-shadow:0 -14px 70px rgba(0,0,0,.45)}
+.laptop::before{content:"";position:absolute;top:5px;left:50%;width:6px;height:6px;border-radius:50%;background:#2A3346;transform:translateX(-50%)}
+.laptop img{border-radius:6px 6px 0 0;cursor:zoom-in}
+.pin{position:absolute;width:30px;height:30px;border-radius:50%;background:var(--yl);color:#1A1A1A;font-weight:900;font-size:.88rem;display:grid;place-items:center;box-shadow:0 0 0 6px rgba(255,197,61,.35);transform:translate(-50%,-50%);pointer-events:none;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 11px rgba(255,197,61,.12)}}
+.legend{position:relative;background:#0B0F18;max-width:1100px;margin:0 auto;padding:18px 18px 26px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:.88rem;color:var(--night-muted);justify-content:center;border-radius:0 0 4px 4px}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+.legend b{width:22px;height:22px;border-radius:50%;background:var(--yl);color:#1A1A1A;display:inline-grid;place-items:center;font-size:.75rem;flex:none}
+.hero-foot{height:56px}
+
+/* ---------- 숫자 띠 ---------- */
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);margin-top:-44px;position:relative;overflow:hidden}
+.stat{padding:24px 18px;display:grid;gap:2px;justify-items:center;text-align:center;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat .n{font-family:var(--f-display);font-size:clamp(2rem,4vw,2.9rem);line-height:1.05}
+.stat .n small{font-family:var(--f-body);font-size:.95rem;font-weight:900;margin-left:2px}
+.stat .l{font-size:.86rem;color:var(--muted);font-weight:700}
+.stat:nth-child(1) .n{color:var(--or)}.stat:nth-child(2) .n{color:var(--gr)}.stat:nth-child(3) .n{color:var(--bl)}.stat:nth-child(4) .n{color:var(--pu)}.stat:nth-child(5) .n{color:var(--sky)}
+
+/* ---------- 흐름 인포그래픽 ---------- */
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;counter-reset:f;position:relative}
+.flow::before{content:"";position:absolute;left:8%;right:8%;top:46px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--or),var(--gr),var(--bl),var(--pu),var(--sky));opacity:.35}
+.fnode{position:relative;display:grid;gap:10px;justify-items:center;text-align:center;counter-increment:f}
+.fic{width:92px;height:92px;border-radius:28px;display:grid;place-items:center;background:var(--surface);border:2px solid var(--c);box-shadow:0 16px 30px -18px var(--c);position:relative}
+.fic svg{width:44px;height:44px;stroke:var(--c);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fic::after{content:counter(f);position:absolute;top:-10px;right:-10px;width:28px;height:28px;border-radius:50%;background:var(--c);color:#fff;font-weight:900;font-size:.85rem;display:grid;place-items:center}
+.fnode h3{font-size:1.02rem}
+.fnode p{font-size:.86rem;color:var(--muted)}
+.who{font-size:.72rem;font-weight:900;letter-spacing:.08em;padding:2px 10px;border-radius:999px;background:var(--sunk);color:var(--muted)}
+
+/* ---------- 차시 지도 + 도넛 ---------- */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:28px;align-items:start}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px}
+.card h3{margin-bottom:4px}
+.card .sub{font-size:.86rem;color:var(--muted);margin-bottom:18px}
+.lrow{display:grid;grid-template-columns:3.2em minmax(0,11em) minmax(0,1fr);gap:10px;align-items:center;padding:5px 0;font-size:.88rem}
+.lrow .no{font-family:var(--f-display);font-size:1.05rem;color:var(--c)}
+.lrow .t{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lrow .bar{height:22px;border-radius:6px;background:var(--sunk);position:relative;overflow:hidden}
+.lrow .bar i{position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--c);border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-style:normal;font-weight:900;font-size:.76rem}
+.lgroup{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.lgroup:first-of-type{margin-top:0;border-top:0;padding-top:0}
+.ltag{display:inline-block;font-size:.72rem;font-weight:900;letter-spacing:.06em;color:var(--c);margin-bottom:2px}
+.donut{width:min(250px,70vw);aspect-ratio:1;border-radius:50%;margin:6px auto 22px;position:relative;
+  background:conic-gradient(var(--bl) 0 35.54%,var(--or) 0 56.2%,var(--gr) 0 71.07%,var(--sky) 0 83.47%,var(--yl) 0 91.74%,var(--pu) 0 98.35%,var(--rd) 0 100%)}
+.donut::after{content:"";position:absolute;inset:24%;border-radius:50%;background:var(--surface)}
+.donut span{position:absolute;inset:0;display:grid;place-content:center;text-align:center;z-index:1}
+.donut b{font-family:var(--f-display);font-size:2.6rem;line-height:1}
+.donut small{font-size:.8rem;color:var(--muted);font-weight:700}
+.dl-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.dl-list li{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:.9rem}
+.dl-list li::before{content:"";width:14px;height:14px;border-radius:4px;background:var(--c)}
+.dl-list em{font-style:normal;color:var(--muted);font-size:.8rem;display:block;line-height:1.4}
+.dl-list b{font-family:var(--f-mono);font-size:.9rem}
+
+/* ---------- 기능 쇼케이스 ---------- */
+.feature{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:52px;align-items:center;padding-block:50px;border-top:1px solid var(--line)}
+.feature:first-of-type{border-top:0;padding-top:0}
+.feature.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}
+.feature.flip .media{order:2}
+.feature .txt{display:grid;gap:12px}
+.feature .txt p{color:var(--muted)}
+.feature ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:.93rem;color:var(--muted)}
+.feature li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px}
+.feature li::before{content:"✓";width:20px;height:20px;border-radius:50%;background:color-mix(in srgb,var(--gr) 16%,transparent);color:var(--gr);font-weight:900;font-size:.75rem;display:grid;place-items:center;margin-top:3px}
+.tag{justify-self:start;font-size:.75rem;font-weight:900;letter-spacing:.08em;padding:4px 12px;border-radius:999px;color:#fff;background:var(--c,var(--or))}
+.media{position:relative;min-width:0}
+.float{position:absolute;right:-18px;bottom:-34px;width:31%;border-radius:22px;border:6px solid #0B0F18;box-shadow:var(--shadow);cursor:zoom-in;background:#0B0F18}
+.chip{position:absolute;left:-14px;top:-16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px;box-shadow:var(--shadow);font-size:.82rem;display:flex;gap:10px;align-items:center}
+.chip b{font-family:var(--f-display);font-size:1.5rem;color:var(--gr);font-weight:400}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.trio figure{margin:0;display:grid;gap:12px;align-content:start}
+.trio figcaption{display:grid;gap:4px}
+.trio figcaption b{font-size:1.02rem}
+.trio figcaption span{font-size:.88rem;color:var(--muted)}
+
+/* ---------- 기기 인포그래픽 ---------- */
+.devices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:8px}
+.dev{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;gap:12px;align-content:start;position:relative;overflow:hidden}
+.dev::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--c)}
+.dev svg{width:64px;height:64px;stroke:var(--c);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dev p{font-size:.9rem;color:var(--muted)}
+.dev ul{margin:0;padding-left:1.1em;font-size:.88rem;color:var(--muted);display:grid;gap:3px}
+
+/* ---------- 모둠 프로젝트(밤색 구역) ---------- */
+.night{background:var(--night);color:var(--night-ink)}
+.night .sec-head p{color:var(--night-muted)}
+.night .eyebrow{color:var(--yl)}
+.pstep{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:40px}
+.pstep div{border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:16px;display:grid;gap:4px;background:rgba(255,255,255,.03);position:relative}
+.pstep div::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--yl);font-weight:900;z-index:1}
+.pstep div:last-child::after{display:none}
+.pstep b{font-family:var(--f-display);font-weight:400;font-size:1.25rem;color:var(--yl)}
+.pstep span{font-size:.86rem;color:var(--night-muted)}
+.pgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.pgrid figure{margin:0;display:grid;gap:10px}
+.pgrid figure.wide{grid-column:1/-1}
+.pgrid figcaption{font-size:.88rem;color:var(--night-muted)}
+.pgrid figcaption b{color:var(--night-ink);display:block;font-size:1rem}
+.night .shot{border-color:rgba(255,255,255,.12)}
+
+/* ---------- 시작하기 ---------- */
+.start{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:stretch}
+.steps{display:grid;gap:14px;align-content:center}
+.step{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;align-items:start}
+.step .k{width:56px;height:56px;border-radius:16px;background:var(--c);color:#fff;font-family:var(--f-display);font-size:1.6rem;display:grid;place-items:center}
+.step p{color:var(--muted);font-size:.92rem;margin-top:2px}
+.qrcard{background:var(--night);color:var(--night-ink);border-radius:22px;padding:28px;display:grid;gap:14px;justify-items:center;text-align:center;align-content:center}
+.qrcard .qr{background:#fff;border-radius:16px;padding:14px;width:min(220px,60vw)}
+.qrcard .qr img{width:100%}
+.qrcard .big{font-family:var(--f-display);font-size:1.7rem;font-weight:400;color:var(--yl)}
+.qrcard p{color:var(--night-muted);font-size:.88rem}
+.qrcard .btn{margin-top:4px}
+
+.faq{display:grid;gap:10px;margin-top:48px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 20px}
+summary{cursor:pointer;padding:16px 0;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--or);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"−"}
+details p{padding-bottom:16px;color:var(--muted);font-size:.93rem}
+footer{padding-block:36px 60px;border-top:1px solid var(--line);color:var(--muted);font-size:.84rem}
+
+#lb{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}
+#lb::backdrop{background:rgba(8,12,22,.88)}
+#lb img{max-width:96vw;max-height:88vh;border-radius:8px;cursor:zoom-out}
+#lb p{color:#fff;text-align:center;font-size:.9rem;margin-top:8px}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stat:nth-child(4){border-left:0}
+  .stat:nth-child(n+4){border-top:1px solid var(--line)}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+  .flow::before{display:none}
+  .flow .fnode:last-child{grid-column:1/-1}
+  .mapgrid,.feature,.feature.flip,.start{grid-template-columns:minmax(0,1fr);gap:26px}
+  .feature.flip .media{order:0}
+  .trio,.devices{grid-template-columns:minmax(0,1fr)}
+  .pstep{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pstep div::after{display:none}
+  .float{right:-6px;bottom:-20px;width:30%}
+}
+@media (max-width:560px){
+  .wrap{padding-inline:16px}
+  section{padding-block:60px}
+  .top nav{display:none}
+  .pin{width:20px;height:20px;font-size:.66rem;box-shadow:0 0 0 3px rgba(255,197,61,.35)}
+  .laptop{padding:8px 8px 0;border-radius:12px 12px 0 0}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat{border-left:1px solid var(--line)!important;border-top:1px solid var(--line)}
+  .stat:nth-child(odd){border-left:0!important}
+  .stat:nth-child(-n+2){border-top:0}
+  .stat:nth-child(5){grid-column:1/-1}
+  .lrow{grid-template-columns:2.6em minmax(0,1fr);row-gap:2px}
+  .lrow .bar{grid-column:1/-1}
+  .pgrid,.pstep{grid-template-columns:minmax(0,1fr)}
+  .chip{position:static;margin-bottom:10px;display:inline-flex}
+  .card{padding:20px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="stripe"></div>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>우리 반을 그래프로</div>
+      <nav aria-label="페이지 안 이동"><a href="#flow">수업 흐름</a><a href="#map">14차시 지도</a><a href="#scenes">수업 장면</a><a href="#project">모둠 프로젝트</a><a href="#start">시작하기</a></nav>
+    </div>
+    <div class="hero-copy">
+      <span class="kicker">📊 중학교 1학년 수학 · Ⅵ. 통계 · 실시간 수업 사이트</span>
+      <h1>학생이 답하는 순간<br><em>우리 반 그래프</em>가 <span class="u">됩니다</span></h1>
+      <p class="lead">교사가 단계를 열면 모든 학생 화면에 같은 문제가 뜨고, 응답은 곧바로 반 그래프·번호판·정답률로 모입니다. 교과서 문제를 그대로 옮기고, 우리 반이 직접 만든 자료로 통계 개념을 익히는 14차시 수업입니다.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://guwol-graph.web.app" target="_blank" rel="noopener">수업 사이트 열기 ↗</a>
+        <a class="btn ghost" href="#scenes">수업 장면 보기 →</a>
+      </div>
+      <p style="font-size:.9rem;color:var(--night-muted)">주소 <span class="url">han.gl/수학6단원</span> · 학교 구글 계정으로 로그인</p>
+    </div>
+    <div class="laptop reveal">
+      <img src="img/hero-teacher.jpg" width="1600" height="956" alt="교사 화면: 왼쪽에 A 음식점 평점 문제와 자료 카드, 오른쪽에 번호별 응답판, 학생 답 막대그래프, 학생이 쓴 평균의 뜻과 AI 피드백이 보인다" data-cap="교사 화면 · 2차시 '평균' 문제를 22명이 푼 모습(시연용 가상 학생)">
+      <span class="pin" style="left:57.5%;top:9.3%">1</span>
+      <span class="pin" style="left:68.6%;top:25%">2</span>
+      <span class="pin" style="left:29%;top:48%">3</span>
+      <span class="pin" style="left:60.8%;top:46%">4</span>
+      <span class="pin" style="left:49.5%;top:82.5%">5</span>
+    </div>
+    <div class="legend">
+      <span><b>1</b>단계 버튼 하나로 모두의 화면 이동</span>
+      <span><b>2</b>번호판: 들어옴·정답·오답이 색으로</span>
+      <span><b>3</b>자료 카드는 끌어서 크기순으로</span>
+      <span><b>4</b>학생 답이 바로 막대그래프로</span>
+      <span><b>5</b>값의 '의미 쓰기'와 AI 피드백</span>
+    </div>
+  </div>
+  <div class="hero-foot"></div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="stats reveal" role="list" aria-label="수업 사이트 한눈에">
+      <div class="stat" role="listitem"><span class="n">14<small>차시</small></span><span class="l">교과서 12 + 특별 활동</span></div>
+      <div class="stat" role="listitem"><span class="n">121<small>단계</small></span><span class="l">발문·문제·개념 카드</span></div>
+      <div class="stat" role="listitem"><span class="n">6<small>종</small></span><span class="l">그래프 자동 그리기</span></div>
+      <div class="stat" role="listitem"><span class="n">53<small>칸</small></span><span class="l">개념 빈칸 채우기</span></div>
+      <div class="stat" role="listitem"><span class="n">3<small>기기</small></span><span class="l">노트북·태블릿·휴대폰</span></div>
+    </div>
+  </div>
+
+  <!-- 수업 흐름 인포그래픽 -->
+  <section id="flow">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">수업 흐름</p>
+        <h2>한 단계가 1분 안에 이렇게 돌아갑니다</h2>
+        <p>교사 노트북 한 대가 진행판이 됩니다. 학생은 같은 주소에 들어와 있기만 하면 되고, 화면 이동은 교사가 맡습니다.</p>
+      </div>
+      <div class="flow reveal">
+        <div class="fnode" style="--c:var(--or)">
+          <div class="fic"><svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="24" rx="3"/><path d="M2 38h44"/><path d="M20 22l4-4 4 4M24 18v10"/></svg></div>
+          <span class="who">교사</span><h3>단계 열기</h3><p>번호 버튼이나 → 키로 다음 문제를 엽니다.</p>
+        </div>
+        <div class="fnode" style="--c:var(--gr)">
+          <div class="fic"><svg viewBox="0 0 48 48"><rect x="14" y="4" width="20" height="40" rx="4"/><path d="M21 38h6"/><path d="M19 20l4 4 7-8"/></svg></div>
+          <span class="who">학생</span><h3>응답하기</h3><p>보기 고르기, 수 입력, 이유 한 줄 쓰기.</p>
+        </div>
+        <div class="fnode" style="--c:var(--bl)">
+          <div class="fic"><svg viewBox="0 0 48 48"><path d="M8 40V8"/><path d="M8 40h34"/><rect x="13" y="26" width="6" height="14"/><rect x="23" y="16" width="6" height="24"/><rect x="33" y="22" width="6" height="18"/></svg></div>
+          <span class="who">자동</span><h3>반 그래프</h3><p>응답이 모이는 대로 그래프와 번호판이 바뀝니다.</p>
+        </div>
+        <div class="fnode" style="--c:var(--pu)">
+          <div class="fic"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M24 24V7"/><path d="M24 24l13 10"/></svg></div>
+          <span class="who">교사</span><h3>정답 공개</h3><p>정답률을 확인하고, 필요하면 10초·30초 마감.</p>
+        </div>
+        <div class="fnode" style="--c:var(--sky)">
+          <div class="fic"><svg viewBox="0 0 48 48"><path d="M8 12h24v16H18l-6 6v-6H8z"/><path d="M36 20h4v14h-4v5l-5-5H24v-2"/></svg></div>
+          <span class="who">함께</span><h3>생각 나누기</h3><p>모인 이유·의미 문장을 띄워 토의합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14차시 지도 + 단계 유형 -->
+  <section id="map" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">14차시 지도</p>
+        <h2>교과서 순서 그대로, 특별 활동 셋을 더해</h2>
+        <p>대푯값부터 상대도수까지 교과서 문제와 문장을 그대로 옮겼고, 우리 반 설문·인천대공원 이용객 자료·모둠 통계 프로젝트를 더했습니다. 막대 길이가 그 차시의 단계 수입니다.</p>
+      </div>
+      <div class="mapgrid">
+        <div class="card reveal">
+          <h3>차시별 단계 수</h3>
+          <p class="sub">모두 121단계 · 교과서 226~258쪽</p>
+          <div class="lgroup" style="--c:var(--or)"><span class="ltag">도입 · 우리 반 설문</span>
+            <div class="lrow"><span class="no">1</span><span class="t">우리 반을 그래프로</span><span class="bar"><i style="--w:43.75%">7</i></span></div>
+          </div>
+          <div class="lgroup" style="--c:var(--bl)"><span class="ltag">대푯값</span>
+            <div class="lrow"><span class="no">2</span><span class="t">평균과 중앙값</span><span class="bar"><i style="--w:62.5%">10</i></span></div>
+            <div class="lrow"><span class="no">3</span><span class="t">최빈값</span><span class="bar"><i style="--w:43.75%">7</i></span></div>
+            <div class="lrow"><span class="no">4</span><span class="t">알맞은 대푯값 · 경제금융</span><span class="bar"><i style="--w:100%">16</i></span></div>
+          </div>
+          <div class="lgroup" style="--c:var(--gr)"><span class="ltag">자료의 정리와 해석</span>
+            <div class="lrow"><span class="no">5</span><span class="t">줄기와 잎 그림</span><span class="bar"><i style="--w:56.25%">9</i></span></div>
+            <div class="lrow"><span class="no">6</span><span class="t">도수분포표</span><span class="bar"><i style="--w:68.75%">11</i></span></div>
+            <div class="lrow"><span class="no">7</span><span class="t">히스토그램</span><span class="bar"><i style="--w:43.75%">7</i></span></div>
+            <div class="lrow"><span class="no">8</span><span class="t">도수분포다각형</span><span class="bar"><i style="--w:37.5%">6</i></span></div>
+            <div class="lrow"><span class="no">9</span><span class="t">상대도수와 그 분포</span><span class="bar"><i style="--w:68.75%">11</i></span></div>
+          </div>
+          <div class="lgroup" style="--c:var(--pu)"><span class="ltag">특별 활동 · 실제 자료</span>
+            <div class="lrow"><span class="no">10</span><span class="t">인천대공원 이용객</span><span class="bar"><i style="--w:62.5%">10</i></span></div>
+          </div>
+          <div class="lgroup" style="--c:var(--sky)"><span class="ltag">정리</span>
+            <div class="lrow"><span class="no">11</span><span class="t">대단원 스스로 점검하기</span><span class="bar"><i style="--w:81.25%">13</i></span></div>
+          </div>
+          <div class="lgroup" style="--c:var(--rd)"><span class="ltag">통계 프로젝트 · 모둠</span>
+            <div class="lrow"><span class="no">12</span><span class="t">문제 설정 · 계획</span><span class="bar"><i style="--w:31.25%">5</i></span></div>
+            <div class="lrow"><span class="no">13</span><span class="t">자료 수집 · 분석</span><span class="bar"><i style="--w:25%">4</i></span></div>
+            <div class="lrow"><span class="no">14</span><span class="t">해석 · 발표 · 돌아보기</span><span class="bar"><i style="--w:31.25%">5</i></span></div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>121단계는 이렇게 짜여 있어요</h3>
+          <p class="sub">단계마다 학생이 하는 일</p>
+          <div class="donut" role="img" aria-label="단계 유형 비율: 수 답하기 43, 퀴즈 25, 이유 쓰기 18, 개념 15, 설문 10, 글쓰기 8, 슬라이더 2"><span><b>121</b><small>단계</small></span></div>
+          <ul class="dl-list">
+            <li style="--c:var(--bl)"><span>수 답하기<em>평균·도수·상대도수 직접 구하기</em></span><b>43</b></li>
+            <li style="--c:var(--or)"><span>퀴즈<em>보기 고르기 · O / X</em></span><b>25</b></li>
+            <li style="--c:var(--gr)"><span>이유 쓰기<em>고르고 까닭을 한 줄로</em></span><b>18</b></li>
+            <li style="--c:var(--sky)"><span>개념 카드<em>빈칸 채우기 · 교사가 눌러 채점</em></span><b>15</b></li>
+            <li style="--c:var(--yl)"><span>우리 반 설문<em>답이 곧 그래프 자료</em></span><b>10</b></li>
+            <li style="--c:var(--pu)"><span>글쓰기<em>해석 문장 · 돌아보기</em></span><b>8</b></li>
+            <li style="--c:var(--rd)"><span>슬라이더<em>값을 움직이면 대푯값이 함께</em></span><b>2</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 수업 장면 -->
+  <section id="scenes" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">수업 장면</p>
+        <h2>실제 화면으로 보는 수업</h2>
+        <p>아래 화면은 모두 수업 사이트를 그대로 캡처한 것입니다. 학생 이름은 시연용 가상 이름입니다.</p>
+      </div>
+
+      <div class="feature reveal">
+        <div class="media">
+          <img class="shot" src="img/picto.jpg" width="1600" height="956" alt="교사 화면: 가장 좋아하는 급식 메뉴 응답이 그림그래프로 나타나 있다. 치킨 6명, 마라탕 5명, 햄버거 4명" loading="lazy">
+          <img class="float" src="img/student-phone.jpg" width="975" height="2110" alt="학생 휴대폰 화면: 급식 만족도에 '매우 만족'으로 제출 완료, 아래에 반 원그래프" loading="lazy">
+        </div>
+        <div class="txt">
+          <span class="tag" style="--c:var(--or)">1차시 · 도입</span>
+          <h3>첫 시간, 우리 반이 자료가 됩니다</h3>
+          <p>급식 메뉴, 많이 쓰는 앱, 통학 시간… 학생이 고르는 순간 그림그래프·막대·원·띠·꺾은선그래프가 그려집니다. 이렇게 모은 통학 시간과 급식 메뉴는 2·3차시 대푯값 문제에서 다시 쓰입니다.</p>
+          <ul><li>휴대폰에서도 보기 버튼이 크게</li><li>학생 화면 그래프는 교사가 켤 때만 보여 앞선 응답에 휩쓸리지 않음</li></ul>
+        </div>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="media">
+          <img class="shot" src="img/graph-compare.jpg" width="1600" height="1452" alt="같은 급식 만족도 자료를 원그래프, 띠그래프, 막대그래프, 꺾은선그래프로 나란히 그린 교사 화면과 학생별 그래프 투표 이유" loading="lazy">
+        </div>
+        <div class="txt">
+          <span class="tag" style="--c:var(--bl)">그래프 비교 · 투표</span>
+          <h3>같은 자료, 네 가지 그래프 — 어느 것이 알맞을까?</h3>
+          <p>"만족한다는 학생이 반을 넘을까?"라는 탐구 질문에 답하기 좋은 그래프를 학생이 직접 고르고 까닭을 씁니다. 득표 수와 번호별 이유가 교사 화면에 바로 모입니다.</p>
+          <ul><li>원·띠그래프는 전체를 100%로, 막대·꺾은선은 명 수로</li><li>[투표 결과 공개]로 학생 화면에 결과 띄우기</li></ul>
+        </div>
+      </div>
+
+      <div class="feature reveal">
+        <div class="media">
+          <div class="chip"><b>79%</b><span>반 전체<br>빈칸 정답률</span></div>
+          <img class="shot" src="img/concept-blanks.jpg" width="1600" height="956" alt="개념 카드 '대푯값과 평균'의 빈칸과, 오른쪽에 빈칸별 반 정답률 막대: 변량 100%, 수량 64%, 개수 55%" loading="lazy">
+        </div>
+        <div class="txt">
+          <span class="tag" style="--c:var(--sky)">개념 빈칸</span>
+          <h3>설명은 짧게, 핵심 낱말은 학생이 채우게</h3>
+          <p>개념 카드 15장에 빈칸 53칸이 있습니다. 개념 이름은 직접 쓰고 나머지는 목록에서 고릅니다. 교사가 빈칸을 누르면 그때 화면 앞에 있는 학생들이 한꺼번에 채점되고, 빈칸마다 반 정답률이 막대로 보입니다.</p>
+          <ul><li>띄어쓰기는 무시하고 채점</li><li>번호판에 '모두 맞음 / 틀린 칸 있음'이 색으로</li></ul>
+        </div>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="media">
+          <img class="shot" src="img/student-meaning.jpg" width="1600" height="1437" alt="학생 노트북 화면: A 음식점 평점 자료 카드, 오른쪽 계산기, 제출 완료 4점, 그 아래 의미 쓰기 칸과 AI 피드백 받기 단추, 반 응답 막대그래프" loading="lazy">
+        </div>
+        <div class="txt">
+          <span class="tag" style="--c:var(--gr)">자료 카드 · 계산기 · 의미 쓰기</span>
+          <h3>값을 구하고, 그 값이 무슨 뜻인지까지</h3>
+          <p>자료는 끌어서 순서를 바꾸는 카드라 중앙값을 찾을 때 직접 크기순으로 늘어놓습니다. 카드를 누르면 오른쪽 계산기에 들어갑니다. 실생활 문제에서는 답을 낸 뒤 "이 값이 무엇을 알려 주는지" 한 문장을 쓰고, AI 피드백을 한 번 받습니다.</p>
+          <ul><li>AI는 바른 값을 대신 알려 주지 않고 다시 생각할 거리를 줌</li><li>교사 화면에 번호·이름·구한 값과 함께 모임</li></ul>
+        </div>
+      </div>
+
+      <div class="feature reveal">
+        <div class="media">
+          <img class="shot" src="img/why-reasons.jpg" width="1600" height="956" alt="기증 물품 자료에서 알맞은 대푯값을 고른 결과 막대그래프(중앙값 14명, 평균 4명, 최빈값 3명)와 학생별 고른 이유 목록" loading="lazy">
+        </div>
+        <div class="txt">
+          <span class="tag" style="--c:var(--pu)">고르고 이유 쓰기</span>
+          <h3>"왜 중앙값이야?" — 이유가 보이는 토의</h3>
+          <p>154개를 기증한 반 하나 때문에 평균이 커지는 자료에서 어떤 대푯값이 알맞은지 고르고 까닭을 씁니다. 교사 화면에는 선택지별로 이유가 묶여 나와, 서로 다른 생각을 바로 짚어 토의를 시작할 수 있습니다.</p>
+          <ul><li>18개 단계가 이 방식</li><li>슬라이더 단계에서는 교사가 값을 움직이면 모두의 대푯값이 함께 바뀜</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 교사 도구 -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">교사 도구</p>
+        <h2>TV에 띄우고, 시간을 재고, 학생 화면을 엿보고</h2>
+      </div>
+      <div class="trio reveal">
+        <figure>
+          <img class="shot" src="img/tv-mode.jpg" width="1600" height="852" alt="TV 모드: 문제가 화면 가득 크게, 위에 응답 22/22 번호 띠만 보인다" loading="lazy">
+          <figcaption><b>TV 모드</b><span>문제를 화면 가득 크게 띄우고 그래프·이름·답은 가립니다. 위 한 줄 띠로 누가 냈는지만 보여요.</span></figcaption>
+        </figure>
+        <figure>
+          <img class="shot" src="img/countdown.jpg" width="1600" height="904" alt="학생 화면 위쪽에 '응답 마감까지 27초' 초읽기 막대가 떠 있다" loading="lazy">
+          <figcaption><b>10초 · 30초 마감</b><span>누르면 학생 화면에도 남은 초가 뜨고, 시간이 되면 응답이 저절로 마감됩니다.</span></figcaption>
+        </figure>
+        <figure>
+          <img class="shot" src="img/peek.jpg" width="1600" height="956" alt="교사 화면 오른쪽에 학생 화면 미리 보기 창이 열려 있다" loading="lazy">
+          <figcaption><b>학생 화면 미리 보기</b><span>지금 학생에게 어떻게 보이는지 휴대폰·노트북 폭으로 옆에 띄워 확인합니다.</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="devices reveal" style="margin-top:40px">
+        <div class="dev" style="--c:var(--or)">
+          <svg viewBox="0 0 64 64"><rect x="8" y="12" width="48" height="32" rx="3"/><path d="M2 50h60"/><path d="M16 22h14M16 28h20M16 34h10"/><rect x="40" y="20" width="10" height="16"/></svg>
+          <h3>교사 노트북 · 진행판</h3>
+          <p>teacher 화면. 왼쪽 문제, 오른쪽 답안 대시보드.</p>
+          <ul><li>학년·반·차시 고르기, 단계 이동</li><li>정답·풀이·교사 질문은 교사에게만</li><li>반 기록 CSV 내려받기</li></ul>
+        </div>
+        <div class="dev" style="--c:var(--bl)">
+          <svg viewBox="0 0 64 64"><rect x="4" y="8" width="56" height="36" rx="3"/><path d="M24 56h16M32 44v12"/><path d="M14 34l8-10 8 6 10-14 10 8"/></svg>
+          <h3>교실 TV · 함께 보기</h3>
+          <p>교사 화면을 TV로 보내고 [TV에서 결과 가리기].</p>
+          <ul><li>화면 배율 70~180%</li><li>교사 질문 숨기기·문제 칸 접기</li></ul>
+        </div>
+        <div class="dev" style="--c:var(--gr)">
+          <svg viewBox="0 0 64 64"><rect x="6" y="14" width="34" height="24" rx="2"/><path d="M2 42h42"/><rect x="44" y="10" width="16" height="32" rx="3"/><path d="M50 37h4"/></svg>
+          <h3>학생 노트북 · 태블릿 · 휴대폰</h3>
+          <p>같은 주소, 학교 구글 계정으로 로그인.</p>
+          <ul><li>명렬표로 반·번호·이름 자동</li><li>교사가 연 단계만 보임</li><li>새 버전이 나오면 알림</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 모둠 프로젝트 -->
+  <section id="project" class="night">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">12~14차시 · 통계 프로젝트</p>
+        <h2>모둠이 묻고, 모으고, 분석하고, 포스터로</h2>
+        <p>통계적 문제해결 과정을 사이트 안에서 끝까지 해 봅니다. 교사가 모둠을 편성하고 단계를 열면, 모둠은 공동 편집판에서 질문을 정하고 설문을 만들어 다른 반에도 돌립니다.</p>
+      </div>
+      <div class="pstep reveal">
+        <div><b>① 문제 설정</b><span>탐구 질문 정하기 · 교사 승인</span></div>
+        <div><b>② 자료 수집</b><span>모둠 설문을 우리 반·다른 반에</span></div>
+        <div><b>③ 자료 분석</b><span>대푯값·도수분포표·히스토그램·상대도수</span></div>
+        <div><b>④ 해석 · 발표</b><span>포스터 벽 · 가장 설득력 있는 모둠 투표</span></div>
+      </div>
+      <div class="pgrid reveal">
+        <figure>
+          <img class="shot" src="img/team-status.jpg" width="1366" height="860" alt="교사 모둠 프로젝트 화면: 모둠판 단계 버튼, 모둠 편성, 모둠별 탐구 질문과 설문 승인 상태" loading="lazy">
+          <figcaption><b>교사 · 모둠 현황</b>단계 열기, 편성, 설문 승인과 진행률을 한 화면에서.</figcaption>
+        </figure>
+        <figure>
+          <img class="shot" src="img/team-analysis.jpg" width="1280" height="900" alt="모둠 분석실: 어젯밤 수면 시간 자료의 대푯값 카드, 도수분포표, 히스토그램" loading="lazy">
+          <figcaption><b>학생 · 분석실</b>계급의 크기를 바꾸면 표와 히스토그램이 함께 바뀝니다.</figcaption>
+        </figure>
+        <figure class="wide">
+          <img class="shot" src="img/team-posters.jpg" width="1366" height="860" alt="포스터 벽: 1모둠 '우리 반 학생들은 잠을 충분히 잘까?' 히스토그램 포스터와 2모둠 '학교 주변 밤길은 안전할까?' 막대그래프 포스터" loading="lazy">
+          <figcaption><b>포스터 벽</b>모둠 포스터를 나란히 띄워 둘러보고, 14차시에 가장 설득력 있는 모둠에 투표합니다.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 전체 차시 + 시작하기 -->
+  <section id="start">
+    <div class="wrap">
+      <div class="feature reveal" style="padding-top:0">
+        <div class="media"><img class="shot" src="img/lessons.jpg" width="1600" height="956" alt="교사용 전체 차시 페이지: 왼쪽 14차시 목록, 오른쪽 4차시 단계별 발문, 자료, 정답과 풀이" loading="lazy"></div>
+        <div class="txt">
+          <span class="tag" style="--c:var(--sky)">수업 준비</span>
+          <h3>전체 차시를 한 페이지에서 미리 보기</h3>
+          <p>교사 화면의 [📚 전체 차시]를 누르면 121단계의 발문·보기·정답·풀이·교사 질문을 새 탭에서 훑어볼 수 있습니다. 찾기 기능으로 문제를 바로 찾아 수업 흐름을 미리 짭니다.</p>
+        </div>
+      </div>
+
+      <div class="sec-head reveal" style="margin-top:72px">
+        <p class="eyebrow">시작하기</p>
+        <h2>주소 하나, 로그인 한 번</h2>
+      </div>
+      <div class="start">
+        <div class="steps reveal">
+          <div class="step" style="--c:var(--or)"><span class="k">1</span><div><h3>같은 주소로 들어오기</h3><p>교사·학생 모두 <b>han.gl/수학6단원</b>. 교사 계정이면 교사 화면이 저절로 열립니다.</p></div></div>
+          <div class="step" style="--c:var(--gr)"><span class="k">2</span><div><h3>학교 구글 계정으로 로그인</h3><p>학생은 명렬표로 학년·반·번호·이름이 자동으로 잡혀 따로 입력하지 않습니다.</p></div></div>
+          <div class="step" style="--c:var(--bl)"><span class="k">3</span><div><h3>교사: 반과 차시 고르고 단계 열기</h3><p>[대기] 화면에서 시작해 번호 버튼이나 → 키로 넘깁니다. 수업 중에는 교사 화면을 켜 두세요.</p></div></div>
+        </div>
+        <div class="qrcard reveal">
+          <div class="qr"><img src="img/qr.svg" width="220" height="220" alt="수업 사이트 QR 코드"></div>
+          <span class="big">han.gl/수학6단원</span>
+          <p>휴대폰 카메라로 찍으면 바로 열립니다</p>
+          <a class="btn primary" href="https://guwol-graph.web.app" target="_blank" rel="noopener">수업 사이트 열기 ↗</a>
+        </div>
+      </div>
+
+      <div class="faq reveal">
+        <details><summary>어떤 기기에서 되나요?</summary><p>크롬·엣지·사파리 같은 최신 브라우저가 있는 노트북, 태블릿, 휴대폰이면 됩니다. 설치할 프로그램은 없습니다. 학생 화면은 휴대폰 폭에 맞춰 보기 버튼이 커집니다.</p></details>
+        <details><summary>로그인이 안 되는 학생이 있어요.</summary><p>학교 구글 계정(@guwol.icems.kr)으로 로그인해야 하고, 명렬표에 있는 계정이어야 합니다. 개인 구글 계정으로 들어오면 "명렬표에 없는 계정" 안내가 뜹니다.</p></details>
+        <details><summary>교사 화면을 꺼도 되나요?</summary><p>수업 중에는 켜 두세요. 학생 화면의 반 그래프, 10초·30초 마감은 교사 화면이 계산해서 보내 줍니다.</p></details>
+        <details><summary>TV에 띄우면 학생 이름이 보이나요?</summary><p>교사 화면의 글 응답 카드에는 번호와 이름이 나옵니다. 교실 TV에 띄울 때는 [TV에서 결과 가리기]를 켜면 문제만 크게 보이고 이름·답·그래프는 가려집니다.</p></details>
+        <details><summary>AI 피드백은 어떻게 쓰이나요?</summary><p>실생활 대푯값 문제에서 학생이 쓴 '의미 쓰기' 문장에만, 한 문제에 한 번 피드백을 줍니다. 정답 값을 대신 알려 주지 않고 다시 생각할 거리를 제안하며, 학생 이름은 보내지 않습니다.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:grid;gap:4px">
+    <p><b>우리 반을 그래프로</b> · 구월중학교 1학년 수학 Ⅵ. 통계 실시간 수업 사이트 · <a href="https://guwol-graph.web.app" target="_blank" rel="noopener">guwol-graph.web.app</a></p>
+    <p>이 페이지의 화면은 시연을 위해 가상 학생 응답으로 만든 캡처이며, 학생 이름은 실제 학생과 관계없습니다. 교과서 문제는 중학교 수학 1 교과서(Ⅵ. 통계)에서 가져왔습니다.</p>
+  </div>
+</footer>
+
+<dialog id="lb" aria-label="크게 보기"><img alt=""><p></p></dialog>
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=lb.querySelector('img'), cap=lb.querySelector('p');
+  document.querySelectorAll('.shot, .laptop img, .float').forEach(function(el){
+    el.addEventListener('click',function(){
+      im.src=el.currentSrc||el.src; im.alt=el.alt; cap.textContent=el.dataset.cap||el.alt;
+      if(lb.showModal) lb.showModal();
+    });
+  });
+  lb.addEventListener('click',function(){ lb.close(); });
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
